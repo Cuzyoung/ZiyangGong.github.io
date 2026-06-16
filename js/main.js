@@ -240,7 +240,7 @@ updateGithubStars();
   const params = new URLSearchParams({
     d: siteId,
     cl: "ffffff",
-    w: "a",
+    w: "250",
   });
 
   const script = document.createElement("script");

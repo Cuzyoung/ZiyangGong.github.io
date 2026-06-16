@@ -920,13 +920,17 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 160px;
+  width: 250px;
   max-width: 100%;
+  min-height: 50px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
 .visitors-map img {
+  width: 250px;
   max-width: 100%;
+  height: auto;
   border-radius: var(--borderRadiusLG);
 }
 
