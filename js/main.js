@@ -183,39 +183,47 @@ activateSection("publications");
 // ===== Visitor Counter (Firebase) =====
 (function initVisitorCounter() {
   const DATABASE_URL = "https://ziyang-like-default-rtdb.firebaseio.com";
-  const VISITORS_PATH = "/visitors/devices";
-  const VISITOR_DEVICE_KEY = "ziyang_gong_visitor_device_id";
+  const PAGE_VIEWS_PATH = "/visitors/pageviews";
+  const VISIT_FLAG_KEY = "ziyang_gong_visit_recorded";
   const visitorCountEl = document.getElementById("visitorCount");
 
   if (!visitorCountEl) return;
 
-  function getVisitorDeviceId() {
-    let deviceId = localStorage.getItem(VISITOR_DEVICE_KEY);
-    if (!deviceId) {
-      deviceId = "visitor_" + Math.random().toString(36).substr(2, 9) + "_" + Date.now();
-      localStorage.setItem(VISITOR_DEVICE_KEY, deviceId);
+  const htmlBaseline = Number(visitorCountEl.dataset.visitorBaseline || 0);
+
+  async function fetchPageViews() {
+    const response = await fetch(`${DATABASE_URL}${PAGE_VIEWS_PATH}.json`);
+    const value = await response.json();
+    return Number(value) || 0;
+  }
+
+  async function recordVisitOnce() {
+    if (sessionStorage.getItem(VISIT_FLAG_KEY)) return;
+
+    const current = await fetchPageViews();
+    const response = await fetch(`${DATABASE_URL}${PAGE_VIEWS_PATH}.json`, {
+      method: "PUT",
+      body: JSON.stringify(current + 1),
+    });
+
+    if (response.ok) {
+      sessionStorage.setItem(VISIT_FLAG_KEY, "1");
     }
-    return deviceId;
   }
 
   async function updateVisitorCount() {
     try {
-      const deviceId = getVisitorDeviceId();
-      await fetch(`${DATABASE_URL}${VISITORS_PATH}/${deviceId}.json`, {
-        method: "PUT",
-        body: JSON.stringify({
-          timestamp: Date.now(),
-          userAgent: navigator.userAgent.slice(0, 50),
-        }),
-      });
-
-      const response = await fetch(`${DATABASE_URL}${VISITORS_PATH}.json`);
-      const data = await response.json();
-      const count = data ? Object.keys(data).length : 0;
-      visitorCountEl.textContent = count.toLocaleString();
+      await recordVisitOnce();
+      const pageviews = await fetchPageViews();
+      const total = htmlBaseline + pageviews;
+      visitorCountEl.textContent = total.toLocaleString();
     } catch (error) {
       console.warn("Failed to update visitor count:", error);
-      visitorCountEl.textContent = "—";
+      if (htmlBaseline > 0) {
+        visitorCountEl.textContent = htmlBaseline.toLocaleString();
+      } else {
+        visitorCountEl.textContent = "—";
+      }
     }
   }
 
