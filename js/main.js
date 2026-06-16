@@ -150,6 +150,79 @@ chips.forEach((chip) => {
 
 setActive("all");
 
+// ===== Section Tabs (Publications / Funding) =====
+const sectionTabs = Array.from(document.querySelectorAll(".section-tab"));
+const sectionPanels = Array.from(document.querySelectorAll(".section-panel"));
+
+function activateSection(name) {
+  sectionTabs.forEach((tab) => {
+    const active = tab.dataset.section === name;
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", String(active));
+  });
+
+  sectionPanels.forEach((panel) => {
+    const active = panel.id === `${name}-panel`;
+    panel.classList.toggle("is-active", active);
+    panel.hidden = !active;
+  });
+}
+
+sectionTabs.forEach((tab) => {
+  tab.addEventListener("click", () => activateSection(tab.dataset.section));
+});
+
+document.querySelectorAll("[data-section-tab]").forEach((link) => {
+  link.addEventListener("click", () => {
+    activateSection(link.dataset.sectionTab);
+  });
+});
+
+activateSection("publications");
+
+// ===== Visitor Counter (Firebase) =====
+(function initVisitorCounter() {
+  const DATABASE_URL = "https://ziyang-like-default-rtdb.firebaseio.com";
+  const VISITORS_PATH = "/visitors/devices";
+  const VISITOR_DEVICE_KEY = "ziyang_gong_visitor_device_id";
+  const visitorCountEl = document.getElementById("visitorCount");
+
+  if (!visitorCountEl) return;
+
+  function getVisitorDeviceId() {
+    let deviceId = localStorage.getItem(VISITOR_DEVICE_KEY);
+    if (!deviceId) {
+      deviceId = "visitor_" + Math.random().toString(36).substr(2, 9) + "_" + Date.now();
+      localStorage.setItem(VISITOR_DEVICE_KEY, deviceId);
+    }
+    return deviceId;
+  }
+
+  async function updateVisitorCount() {
+    try {
+      const deviceId = getVisitorDeviceId();
+      await fetch(`${DATABASE_URL}${VISITORS_PATH}/${deviceId}.json`, {
+        method: "PUT",
+        body: JSON.stringify({
+          timestamp: Date.now(),
+          userAgent: navigator.userAgent.slice(0, 50),
+        }),
+      });
+
+      const response = await fetch(`${DATABASE_URL}${VISITORS_PATH}.json`);
+      const data = await response.json();
+      const count = data ? Object.keys(data).length : 0;
+      visitorCountEl.textContent = count.toLocaleString();
+    } catch (error) {
+      console.warn("Failed to update visitor count:", error);
+      visitorCountEl.textContent = "—";
+    }
+  }
+
+  updateVisitorCount();
+  window.setInterval(updateVisitorCount, 30000);
+})();
+
 // ===== Live GitHub Stars =====
 function formatGithubStars(count) {
   if (count >= 1000) {

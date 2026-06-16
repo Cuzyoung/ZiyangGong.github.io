@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
 </head>
 
 <body>
@@ -35,7 +35,8 @@
     <nav class="nav" aria-label="Primary">
       <a href="#about">About</a>
       <a href="#news">News</a>
-      <a href="#publications">Publications</a>
+      <a href="#works" data-section-tab="publications">Publications</a>
+      <a href="#works" data-section-tab="funding">Funding</a>
     </nav>
   </header>
 
@@ -184,11 +185,18 @@
       </ul>
     </div>
 
-    <!-- ===== Publications ===== -->
-    <div class="card" id="publications">
-      <h2 class="card-title">
-        <i class="fa-solid fa-book icon"></i>Publications
-      </h2>
+    <!-- ===== Publications & Funding ===== -->
+    <div class="card" id="works">
+      <div class="section-switcher" role="tablist" aria-label="Publications and Funding">
+        <button type="button" class="section-tab is-active" role="tab" id="tab-publications" data-section="publications" aria-selected="true" aria-controls="publications-panel">
+          <i class="fa-solid fa-book"></i> Publications
+        </button>
+        <button type="button" class="section-tab" role="tab" id="tab-funding" data-section="funding" aria-selected="false" aria-controls="funding-panel">
+          <i class="fa-solid fa-award"></i> Funding
+        </button>
+      </div>
+
+      <div id="publications-panel" class="section-panel is-active" role="tabpanel" aria-labelledby="tab-publications">
 
       <!-- Filter bar -->
       <div class="filter-bar" role="toolbar" aria-label="Publication filters">
@@ -383,49 +391,6 @@
         </div>
         </article>
 
-        <!-- Publication 6 -->
-        <article class="pub" data-tags="low_altitude_remote_sensing">
-          <div class="thumb">
-            <img src="assets/papers/crossearth-gate.png" alt="Crossearth-gate thumbnail">
-          </div>
-          <div class="content">
-            <div class="ptitle">CrossEarth-Gate: Geospatial vision foundation model for domain generalizable remote sensing semantic segmentation</div>
-            <div class="pauth">Shilei Cao*, <b>Ziyang Gong*</b>, Hehai Lin, Yang Liu, Jiashun Cheng, Xiaoxing Hu, Haoyuan Liang, Guowen Li, Chengwei Qin, Hong Cheng, Xue Yang, Juepeng Zheng, Haohuan Fu</div>
-            <div class="pmeta"><span class="venue-badge">CVPR 2026</span></div>
-            <div class="plinkline">
-              <a href="https://arxiv.org/pdf/2511.20302" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>paper</a>
-              <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i>project</a>
-              <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-code"></i>code</a>
-            </div>
-          <div class="ptags">
-            <span class="tag">Low-Altitude Sensing</span>
-            <span class="tag">Remote Sensing</span>
-            <span class="tag">PEFT</span>
-          </div>
-        </div>
-        </article>
-
-        <article class="pub" data-tags="low_altitude_remote_sensing">
-          <div class="thumb">
-            <img src="assets/papers/diffusionsat.png" alt="diffusionsat thumbnail">
-          </div>
-          <div class="content">
-            <div class="ptitle">Can Generative Geospatial Diffusion Models Excel as Discriminative Geospatial Foundation Models?</div>
-            <div class="pauth">Yuru Jia, Valerio Marsocci, <b>Ziyang Gong</b>, Xue Yang, Maarten Vergauwen, Andrea Nascetti</div>
-            <div class="pmeta"><span class="venue-badge">ICCV 2025</span></div>
-            <div class="plinkline">
-              <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Jia_Can_Generative_Geospatial_Diffusion_Models_Excel_as_Discriminative_Geospatial_Foundation_ICCV_2025_paper.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>paper</a>
-              <!-- <a href="#" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i>project</a> -->
-              <a href="https://github.com/yurujaja/SatDiFuser" target="_blank" rel="noopener"><i class="fa-solid fa-code"></i>code</a>
-            </div>
-          <div class="ptags">
-            <span class="tag">Low-Altitude Sensing</span>
-            <span class="tag">Remote Sensing</span>
-            <span class="tag">Foundation Model</span>
-          </div>
-        </div>
-        </article>
-
         <article class="pub" data-tags="autonomous_driving">
           <div class="thumb">
             <img src="assets/papers/coda.png" alt="coda thumbnail">
@@ -449,16 +414,49 @@
 
 
       </div>
+      </div>
 
-      <!-- Visitor Map (MapMyVisitors — ClustrMaps 已不可用/被墙) -->
+      <div id="funding-panel" class="section-panel" role="tabpanel" aria-labelledby="tab-funding" hidden>
+        <div class="funding-list">
+
+          <article class="funding">
+            <div class="funding-logo">
+              <img src="assets/logos/ccf.png" alt="China Computer Federation (CCF)">
+            </div>
+            <div class="content">
+              <div class="ftitle">CCF PhD Student Funding Program (Phase I, 2026)</div>
+              <div class="forg">China Computer Federation (中国计算机学会 · CCF Doctoral Student Funding Program)</div>
+              <div class="fmeta">
+                <span class="venue-badge">2026</span>
+                <span class="venue-badge">National · 10 Awardees</span>
+              </div>
+              <div class="fdesc">
+                Selected in the first cohort of the <b>CCF PhD Student Funding Program (Phase I, 2026)</b>, as one of only <b>10</b> recipients nationwide.
+                Project: <i>国产框架驱动的空间智能具身基座模型：从基准评测到城市环卫落地</i>.
+              </div>
+              <div class="flinkline">
+                <a href="https://www.ccf.org.cn/rewardsandincentives/incentiveproject/bsszzjh/2026-06-03/900463.shtml" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i>Official Announcement</a>
+                <a href="https://www.ccf.org.cn/" target="_blank" rel="noopener"><i class="fa-solid fa-building"></i>CCF</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Visitor stats & map -->
       <div class="visitors-section">
         <h3 class="visitors-title">
           <i class="fa-solid fa-earth-americas"></i> Visitors
         </h3>
+        <p class="visitors-count" aria-live="polite">
+          <i class="fa-solid fa-users"></i>
+          <span id="visitorCount">—</span> unique visitors
+        </p>
         <div id="visitors-map" class="visitors-map" data-map-site-id="hFR-3g6IlDmVRlfxWEb6vhuPb0Q0_JWj4gEV0TPY-MA"></div>
         <p id="visitors-map-fallback" class="visitors-map-fallback" hidden>
-          Visitor map is temporarily unavailable.
-          <a href="https://mapmyvisitors.com/" target="_blank" rel="noopener">Create a free widget at MapMyVisitors</a>
+          Live visitor map is unavailable in some networks.
+          <a href="https://mapmyvisitors.com/" target="_blank" rel="noopener">MapMyVisitors</a>
         </p>
       </div>
 
@@ -479,7 +477,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>
 
