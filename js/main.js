@@ -289,12 +289,9 @@ updateGithubStars();
   };
 
   const params = new URLSearchParams({
-    cl: "ffffff",
-    w: "300",
-    t: "tt",
     d: siteId,
-    co: "6fbcf2",
-    ct: "ffffff",
+    cl: "ffffff",
+    w: "a",
   });
 
   const script = document.createElement("script");
