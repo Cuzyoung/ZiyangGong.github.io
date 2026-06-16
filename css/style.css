@@ -387,13 +387,53 @@ a:hover {
   font-size: var(--fontSize);
 }
 
-/* ===== Affiliations ===== */
-.affiliations {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: var(--margin);
+/* ===== Affiliations (marquee scroll) ===== */
+.affiliations-marquee {
+  overflow: hidden;
   padding-top: var(--paddingSM);
   border-top: 1px solid var(--colorBorderSecondary);
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+
+.affiliations-track {
+  display: flex;
+  width: max-content;
+  animation: affiliations-marquee 36s linear infinite;
+}
+
+.affiliations-marquee:hover .affiliations-track {
+  animation-play-state: paused;
+}
+
+.affiliation-set {
+  display: flex;
+  gap: var(--margin);
+  flex-shrink: 0;
+}
+
+@keyframes affiliations-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .affiliations-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    gap: var(--margin);
+  }
+
+  .affiliation-set[aria-hidden="true"] {
+    display: none;
+  }
+
+  .affiliations-marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
 }
 
 .affiliation {
@@ -407,6 +447,8 @@ a:hover {
   border: 1px solid transparent;
   transition: all var(--motionDuration) var(--motionEase);
   cursor: default;
+  flex-shrink: 0;
+  width: 110px;
 }
 
 .affiliation:hover {
@@ -415,8 +457,8 @@ a:hover {
 }
 
 .affiliation .logo-box {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -617,6 +659,16 @@ a:hover {
   border: 1px solid var(--colorPrimaryBorder);
 }
 
+.pub .pmeta .star-badge {
+  color: #24292f;
+  background: #f6f8fa;
+  border-color: #d0d7de;
+}
+
+.pub .pmeta .star-badge i {
+  margin-right: 2px;
+}
+
 .pub .plinkline {
   margin-top: var(--marginXS);
   display: flex;
@@ -736,8 +788,8 @@ a:hover {
     height: 180px;
   }
 
-  .affiliations {
-    gap: var(--margin);
+  .affiliation {
+    width: 96px;
   }
 }
 
