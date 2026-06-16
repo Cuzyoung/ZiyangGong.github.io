@@ -150,6 +150,49 @@ chips.forEach((chip) => {
 
 setActive("all");
 
+// ===== Live GitHub Stars =====
+function formatGithubStars(count) {
+  if (count >= 1000) {
+    const value = (count / 1000).toFixed(1).replace(/\.0$/, "");
+    return `${value}k`;
+  }
+  return count.toLocaleString();
+}
+
+async function updateGithubStars() {
+  const nodes = Array.from(document.querySelectorAll("[data-github-stars]"));
+  if (!nodes.length) return;
+
+  const repos = [...new Set(nodes.map((node) => node.dataset.githubStars).filter(Boolean))];
+
+  await Promise.all(
+    repos.map(async (repo) => {
+      try {
+        const response = await fetch(`https://api.github.com/repos/${repo}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        const formatted = formatGithubStars(data.stargazers_count);
+        nodes
+          .filter((node) => node.dataset.githubStars === repo)
+          .forEach((node) => {
+            node.textContent = formatted;
+          });
+      } catch (error) {
+        console.warn(`Failed to fetch GitHub stars for ${repo}:`, error);
+        nodes
+          .filter((node) => node.dataset.githubStars === repo)
+          .forEach((node) => {
+            if (node.dataset.githubStarsFallback) {
+              node.textContent = node.dataset.githubStarsFallback;
+            }
+          });
+      }
+    })
+  );
+}
+
+updateGithubStars();
+
 // ===== Auto-update Date =====
 document.getElementById("lastUpdated").textContent = new Date().toISOString().slice(0, 10);
 
