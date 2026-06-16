@@ -916,26 +916,6 @@ a:hover {
   color: var(--colorPrimary);
 }
 
-.visitors-count {
-  margin: 0 0 var(--margin);
-  color: var(--colorTextSecondary);
-  font-size: var(--fontSize);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.visitors-count i {
-  color: var(--colorPrimary);
-}
-
-.visitors-count #visitorCount {
-  font-weight: var(--fontWeightStrong);
-  color: var(--colorText);
-  font-size: var(--fontSizeLg);
-}
-
 .visitors-map {
   display: flex;
   justify-content: center;
