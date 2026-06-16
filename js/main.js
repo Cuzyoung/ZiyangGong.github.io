@@ -193,6 +193,43 @@ async function updateGithubStars() {
 
 updateGithubStars();
 
+// ===== Visitor Map (MapMyVisitors) =====
+(function initVisitorMap() {
+  const container = document.getElementById("visitors-map");
+  const fallback = document.getElementById("visitors-map-fallback");
+  if (!container) return;
+
+  const siteId = container.dataset.mapSiteId;
+  if (!siteId) return;
+
+  const showFallback = () => {
+    container.hidden = true;
+    if (fallback) fallback.hidden = false;
+  };
+
+  const params = new URLSearchParams({
+    cl: "ffffff",
+    w: "300",
+    t: "tt",
+    d: siteId,
+    co: "6fbcf2",
+    ct: "ffffff",
+  });
+
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.id = "mapmyvisitors";
+  script.async = true;
+  script.src = `https://mapmyvisitors.com/map.js?${params.toString()}`;
+  script.onerror = showFallback;
+  container.appendChild(script);
+
+  window.setTimeout(() => {
+    const hasMap = container.querySelector("img, canvas, iframe, svg");
+    if (!hasMap) showFallback();
+  }, 12000);
+})();
+
 // ===== Auto-update Date =====
 document.getElementById("lastUpdated").textContent = new Date().toISOString().slice(0, 10);
 

@@ -754,6 +754,47 @@ a:hover {
   border: 1px solid var(--colorBorderSecondary);
 }
 
+/* ===== Visitors Map ===== */
+.visitors-section {
+  text-align: center;
+  padding: var(--paddingLG) 0 0;
+  margin-top: var(--marginLG);
+}
+
+.visitors-title {
+  margin: 0 0 var(--margin);
+  color: var(--colorText);
+  font-size: var(--fontSize);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--marginXS);
+}
+
+.visitors-title i {
+  color: var(--colorPrimary);
+}
+
+.visitors-map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 160px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.visitors-map img {
+  max-width: 100%;
+  border-radius: var(--borderRadiusLG);
+}
+
+.visitors-map-fallback {
+  margin: 0;
+  color: var(--colorTextSecondary);
+  font-size: var(--fontSizeSm);
+}
+
 /* ===== Footer ===== */
 .footer {
   padding: var(--padding) 0;

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css?v=4" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
 </head>
 
 <body>
@@ -455,16 +455,16 @@
 
       </div>
 
-      <!-- Visitor Map -->
-      <div style="text-align: center; padding: var(--paddingLG) 0 0 0; margin-top: var(--marginLG);">
-        <h3 style="margin: 0 0 var(--margin) 0; color: var(--colorText); font-size: var(--fontSize);">
-          <i class="fa-solid fa-earth-americas" style="color: var(--colorPrimary);"></i> Visitors
+      <!-- Visitor Map (MapMyVisitors — ClustrMaps 已不可用/被墙) -->
+      <div class="visitors-section">
+        <h3 class="visitors-title">
+          <i class="fa-solid fa-earth-americas"></i> Visitors
         </h3>
-        <a href="https://clustrmaps.com/site/1c9de" title="Visit tracker" target="_blank">
-          <img src="//clustrmaps.com/map_v2.png?cl=ffffff&w=300&t=n&d=hFR-3g6IlDmVRlfxWEb6vhuPb0Q0_JWj4gEV0TPY-MA&co=6fbcf2&ct=ffffff"
-               alt="Visitors Map"
-               style="max-width: 100%; border-radius: var(--borderRadiusLG);" />
-        </a>
+        <div id="visitors-map" class="visitors-map" data-map-site-id="hFR-3g6IlDmVRlfxWEb6vhuPb0Q0_JWj4gEV0TPY-MA"></div>
+        <p id="visitors-map-fallback" class="visitors-map-fallback" hidden>
+          Visitor map is temporarily unavailable.
+          <a href="https://mapmyvisitors.com/" target="_blank" rel="noopener">Create a free widget at MapMyVisitors</a>
+        </p>
       </div>
 
       <div class="footer">
@@ -484,7 +484,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=5"></script>
 </body>
 </html>
 
