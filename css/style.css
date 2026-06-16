@@ -916,21 +916,22 @@ a:hover {
   color: var(--colorPrimary);
 }
 
-.visitors-map {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.visitors-map-frame {
   width: 250px;
   max-width: 100%;
-  min-height: 50px;
   margin: 0 auto;
   overflow: hidden;
+  border-radius: var(--borderRadiusLG);
 }
 
-.visitors-map img {
-  width: 250px;
-  max-width: 100%;
-  height: auto;
+.visitors-map {
+  transform-origin: top left;
+  will-change: transform;
+}
+
+.visitors-map img,
+.visitors-map iframe {
+  display: block;
   border-radius: var(--borderRadiusLG);
 }
 

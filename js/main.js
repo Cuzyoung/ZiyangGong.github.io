@@ -225,6 +225,7 @@ updateGithubStars();
 
 // ===== Visitor Map (MapMyVisitors) =====
 (function initVisitorMap() {
+  const frame = document.getElementById("visitors-map-frame");
   const container = document.getElementById("visitors-map");
   const fallback = document.getElementById("visitors-map-fallback");
   if (!container) return;
@@ -232,15 +233,37 @@ updateGithubStars();
   const siteId = container.dataset.mapSiteId;
   if (!siteId) return;
 
+  const TARGET_WIDTH = 250;
+
   const showFallback = () => {
-    container.hidden = true;
+    if (frame) frame.hidden = true;
     if (fallback) fallback.hidden = false;
+  };
+
+  const resizeVisitorMap = () => {
+    if (!frame || !container) return false;
+
+    container.style.transform = "none";
+    container.style.width = "auto";
+    container.style.height = "auto";
+
+    const width = container.scrollWidth;
+    const height = container.scrollHeight;
+    if (width < 80 || height < 40) return false;
+
+    const scale = TARGET_WIDTH / width;
+    container.style.width = `${width}px`;
+    container.style.height = `${height}px`;
+    container.style.transform = `scale(${scale})`;
+    frame.style.width = `${TARGET_WIDTH}px`;
+    frame.style.height = `${Math.ceil(height * scale)}px`;
+    return true;
   };
 
   const params = new URLSearchParams({
     d: siteId,
     cl: "ffffff",
-    w: "250",
+    w: "a",
   });
 
   const script = document.createElement("script");
@@ -251,10 +274,17 @@ updateGithubStars();
   script.onerror = showFallback;
   container.appendChild(script);
 
-  window.setTimeout(() => {
-    const hasMap = container.querySelector("img, canvas, iframe, svg");
-    if (!hasMap) showFallback();
-  }, 12000);
+  let attempts = 0;
+  const resizeTimer = window.setInterval(() => {
+    if (resizeVisitorMap() || attempts++ > 40) {
+      window.clearInterval(resizeTimer);
+      if (attempts > 40 && !container.querySelector("iframe, canvas, svg, img, table")) {
+        showFallback();
+      }
+    }
+  }, 500);
+
+  window.addEventListener("resize", () => resizeVisitorMap());
 })();
 
 // ===== Auto-update Date =====
