@@ -155,6 +155,11 @@
       </h2>
       <ul class="timeline">
         <li class="timeline-item">
+          <div class="time">2026-09</div>
+          <div class="desc">🎉 Four papers accepted to <b>NeurIPS 2026</b>: <b>SkillOpt, BEAKER, and ProCLIP (Spotlight)</b>, and <b>SkillLens (Poster)</b>. I am a co-first author of SkillOpt and BEAKER.</div>
+        </li>
+
+        <li class="timeline-item">
           <div class="time">2026-06</div>
           <div class="desc">🎉 Grateful to be selected in the first cohort of the 2026 <b>CCF PhD Student Funding Program (Phase I)</b>, as one of only <b>10</b> recipients nationwide. Official announcement: <a href="https://www.ccf.org.cn/rewardsandincentives/incentiveproject/bsszzjh/2026-06-03/900463.shtml" target="_blank" rel="noopener">official list</a>.</div>
         </li>
@@ -204,10 +209,12 @@
         <button class="filter-tag" data-filter="embodied_intelligence" aria-pressed="false">Embodied Intelligence</button>
         <button class="filter-tag" data-filter="spatial_intelligence" aria-pressed="false">Spatial Intelligence</button>
         <button class="filter-tag" data-filter="agent" aria-pressed="false">Agent</button>
+        <button class="filter-tag" data-filter="vision_language" aria-pressed="false">Vision-Language Learning</button>
         <button class="filter-tag" data-filter="autonomous_driving" aria-pressed="false">Autonomous Driving</button>
         <button class="filter-tag" data-filter="low_altitude_remote_sensing" aria-pressed="false">Low-Altitude & Remote Sensing</button>
       </div>
 
+      <p class="publication-note">* denotes equal contribution; author markers reflect verified contribution information.</p>
       <div class="pub-list" id="pubList">
 
         <!-- Publication: SkillOpt -->
@@ -217,9 +224,9 @@
           </div>
           <div class="content">
             <div class="ptitle">SkillOpt: Executive Strategy for Self-Evolving Agent Skills</div>
-            <div class="pauth">Yifan Yang, <b>Ziyang Gong</b>, Weiquan Huang, Qihao Yang, Ziwei Zhou, Zisu Huang, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo</div>
+            <div class="pauth">Yifan Yang*, <b>Ziyang Gong*</b>, Weiquan Huang*, Qihao Yang*, Ziwei Zhou*, Zisu Huang*, Yan Li, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Yuqing Yang, Dongdong Chen, Xue Yang, Chong Luo</div>
             <div class="pmeta">
-              <span class="venue-badge">arXiv 2026</span>
+              <span class="venue-badge distinction-badge">NeurIPS 2026 · Spotlight</span>
               <span class="venue-badge star-badge"><i class="fa-brands fa-github"></i> <span data-github-stars="microsoft/SkillOpt" data-github-stars-fallback="8.1k">8.1k</span> Stars</span>
             </div>
             <div class="plinkline">
@@ -235,6 +242,45 @@
             </div>
           </div>
         </article>
+        <article class="pub" data-tags="embodied_intelligence" id="paper-beaker">
+          <div class="thumb"><img src="assets/papers/beaker.png" alt="beaker research overview"></div>
+          <div class="content">
+            <div class="ptitle">BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories</div>
+            <div class="pauth">Fei Lin, Tengchao Zhang, <b>Ziyang Gong*</b>, Xiaotong Yu, Bohan Zhang, Yifan Zhou, Qihao Yang, Ji Dai, Dong Li, Yining Jiang, Qinghua Ni, Jun Huang, Qiang Zhang, Yue Zhou, Yonglin Tian, Zhihang Zhong, Xue Yang, Fei-Yue Wang</div>
+            <div class="pmeta"><span class="venue-badge distinction-badge">NeurIPS 2026 · Spotlight</span> <span class="tag">Co-first author</span></div>
+            <div class="plinkline"></div>
+            <div class="pabstract">Expert-curated image and video evaluation of affordance, state understanding, execution processes, and reasoning in self-driving chemical laboratories.</div>
+            <div class="ptags"><span class="tag">Embodied Intelligence</span></div>
+          </div>
+        </article>
+
+        <article class="pub" data-tags="vision_language" id="paper-proclip">
+          <div class="thumb"><img src="assets/papers/proclip.png" alt="proclip research overview"></div>
+          <div class="content">
+            <div class="ptitle">ProCLIP: Progressive Vision-Language Alignment via LLM-based Embedder</div>
+            <div class="pauth">Xiaoxing Hu*, Kaicheng Yang*, <b>Ziyang Gong</b>, Qi Ming, Zonghao Guo, Yu Tian, Xiang An, Ziyong Feng, Xue Yang</div>
+            <div class="pmeta"><span class="venue-badge distinction-badge">NeurIPS 2026 · Spotlight</span></div>
+            <div class="plinkline"><a href="https://arxiv.org/abs/2510.18795" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>Paper</a>
+<a href="https://github.com/VisionXLab/ProCLIP" target="_blank" rel="noopener"><i class="fa-solid fa-code"></i>Code</a></div>
+            <div class="pabstract">Progressive representation inheritance and contrastive tuning align an LLM-based embedder with CLIP while retaining pretrained vision-language knowledge.</div>
+            <div class="ptags"><span class="tag">Vision-Language Learning</span></div>
+          </div>
+        </article>
+
+        <article class="pub" data-tags="agent" id="paper-skilllens">
+          <div class="thumb"><img src="assets/papers/skilllens.png" alt="skilllens research overview"></div>
+          <div class="content">
+            <div class="ptitle">From Raw Experience to Skill Consumption: A Systematic Study of Model-Generated Agent Skills</div>
+            <div class="pauth">Zisu Huang*, Jingwen Xu*, Yifan Yang, <b>Ziyang Gong</b>, Qihao Yang, Muzhao Tian, Xiaohua Wang, Changze Lv, Xuemei Gao, Qi Dai, Bei Liu, Kai Qiu, Xue Yang, Dongdong Chen, Xiaoqing Zheng, Chong Luo</div>
+            <div class="pmeta"><span class="venue-badge distinction-badge">NeurIPS 2026 · Poster</span></div>
+            <div class="plinkline"><a href="https://arxiv.org/abs/2605.23899" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>Paper</a>
+<a href="https://microsoft.github.io/SkillLens/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i>Project</a>
+<a href="https://github.com/microsoft/SkillLens" target="_blank" rel="noopener"><i class="fa-solid fa-code"></i>Code</a></div>
+            <div class="pabstract">A systematic evaluation of experience generation, skill extraction, and skill consumption, including skill utility, transfer, and negative transfer.</div>
+            <div class="ptags"><span class="tag">Agent</span></div>
+          </div>
+        </article>
+
 
         <!-- Publication 1 -->
         <article class="pub" data-tags="embodied_intelligence">
