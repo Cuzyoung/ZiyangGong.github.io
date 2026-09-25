@@ -333,6 +333,16 @@ a:hover {
 }
 
 /* ===== Hero / Profile ===== */
+#about {
+  background-color: #fff;
+  background-image:
+    linear-gradient(105deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.90) 45%, rgba(255, 255, 255, 0.84)),
+    url("../assets/backgrounds/dangerous.webp");
+  background-size: cover;
+  background-position: center 43%;
+  background-repeat: no-repeat;
+}
+
 .hero {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
