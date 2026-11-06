@@ -168,11 +168,24 @@ function activateSection(name) {
   });
 
   document.querySelectorAll("#blogList video").forEach((video) => {
-    if (name === "blog") {
-      video.play().catch(() => {});
-    } else {
+    if (name !== "blog") {
       video.pause();
+      return;
     }
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    const start = () => {
+      video.play().catch(() => {});
+    };
+    requestAnimationFrame(() => {
+      if (video.readyState >= 2) start();
+      else {
+        video.preload = "auto";
+        video.addEventListener("canplay", start, { once: true });
+        video.load();
+      }
+    });
   });
 }
 
