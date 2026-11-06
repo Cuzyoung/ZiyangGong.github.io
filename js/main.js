@@ -166,6 +166,14 @@ function activateSection(name) {
     panel.classList.toggle("is-active", active);
     panel.hidden = !active;
   });
+
+  document.querySelectorAll("#blogList video").forEach((video) => {
+    if (name === "blog") {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  });
 }
 
 sectionTabs.forEach((tab) => {
