@@ -117,7 +117,7 @@
 
 // ===== Publications Filter =====
 const chips = Array.from(document.querySelectorAll(".filter-tag"));
-const pubs = Array.from(document.querySelectorAll(".pub"));
+const pubs = Array.from(document.querySelectorAll("#pubList .pub"));
 
 function setActive(filter) {
   chips.forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.filter === filter)));
@@ -150,8 +150,8 @@ chips.forEach((chip) => {
 
 setActive("all");
 
-// ===== Section Tabs (Publications / Funding) =====
-const sectionTabs = Array.from(document.querySelectorAll(".section-tab"));
+// ===== Section Tabs (Publications / Funding / Blog) =====
+const sectionTabs = Array.from(document.querySelectorAll(".section-tab[data-section]"));
 const sectionPanels = Array.from(document.querySelectorAll(".section-panel"));
 
 function activateSection(name) {

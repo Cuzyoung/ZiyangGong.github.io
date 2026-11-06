@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css?v=11" />
+  <link rel="stylesheet" href="css/style.css?v=14" />
 </head>
 
 <body>
@@ -37,6 +37,7 @@
       <a href="#news">News</a>
       <a href="#works" data-section-tab="publications">Publications</a>
       <a href="#works" data-section-tab="funding">Funding</a>
+      <a href="#works" data-section-tab="blog">Blog &amp; Podcast</a>
     </nav>
   </header>
 
@@ -46,7 +47,7 @@
     <div class="card" id="about">
       <div class="hero">
         <div class="photo">
-          <img src="assets/gzy.jpg" alt="portrait" />
+          <img src="assets/gzy.jpg?v=20261106" alt="portrait" />
         </div>
 
         <div class="intro">
@@ -59,6 +60,9 @@
 
           <p class="bio">
             Welcome. I am <b>Ziyang Gong</b>, a 1st-year Ph.D. student at School of Computer Science, Shanghai Jiao Tong University, co-supervised by <b>Asst. Prof. Xue Yang</b> and <b>Prof. Junchi Yan</b> (IAPR Fellow, ACM-MM26 PC, and ICML Board).
+          </p>
+          <p class="bio">
+            I keep thinking about how, as more and more robotics knowledge is internalized by frontier models, the next generations of foundation models will reshape the way we ask questions, run experiments, and advance research. If you share a passion for Frontier Models &amp; Robotics, feel free to reach out — I would love to discuss and collaborate.
           </p>
 
           <div class="link-group">
@@ -150,17 +154,21 @@
       </h2>
       <ul class="timeline">
         <li class="timeline-item">
+          <div class="time">2026-11</div>
+          <div class="desc">🎉 Congratulations to <b>BEAKER</b> on being accepted to <b>NeurIPS 2026</b> (Evaluations and Datasets) as a <b>Spotlight</b>!</div>
+        </li>
+        <li class="timeline-item">
           <div class="time">2026-09</div>
           <div class="desc">🎉 Congratulations to <b>SkillOpt</b> on being accepted to <b>NeurIPS 2026</b> as a <b>Spotlight</b>!</div>
         </li>
 
         <li class="timeline-item">
           <div class="time">2026-06</div>
-          <div class="desc">🎉 Grateful to be selected in the first cohort of the 2026 <b>CCF PhD Student Funding Program (Phase I)</b>, as one of only <b>10</b> recipients nationwide. Official announcement: <a href="https://www.ccf.org.cn/rewardsandincentives/incentiveproject/bsszzjh/2026-06-03/900463.shtml" target="_blank" rel="noopener">official list</a>.</div>
+          <div class="desc">🎉 Grateful to be selected in the first cohort of the 2026 <b>CCF PhD Student Funding Program (Phase I)</b>, as one of only <b>10</b> recipients nationwide.</div>
         </li>
         <li class="timeline-item">
           <div class="time">2026-06</div>
-          <div class="desc">🎉 We release <b>SkillOpt</b>, a text-space optimizer for self-evolving agent skills. Our GitHub repo has garnered <b><span data-github-stars="microsoft/SkillOpt" data-github-stars-fallback="8.1k">8.1k</span> stars</b>! <a href="https://microsoft.github.io/SkillOpt/" target="_blank" rel="noopener">Project</a> · <a href="https://arxiv.org/abs/2605.23904" target="_blank" rel="noopener">Paper</a> · <a href="https://github.com/microsoft/SkillOpt" target="_blank" rel="noopener">Code</a></div>
+          <div class="desc">🎉 We release <b>SkillOpt</b>, a text-space optimizer for self-evolving agent skills. Our GitHub repo has garnered <b><span data-github-stars="microsoft/SkillOpt" data-github-stars-fallback="8.1k">8.1k</span> stars</b>!</div>
         </li>
         <li class="timeline-item">
           <div class="time">2026-03</div>
@@ -171,12 +179,15 @@
 
     <!-- ===== Publications & Funding ===== -->
     <div class="card" id="works">
-      <div class="section-switcher" role="tablist" aria-label="Publications and Funding">
+      <div class="section-switcher" role="tablist" aria-label="Publications, Funding, and Blog &amp; Podcast">
         <button type="button" class="section-tab is-active" role="tab" id="tab-publications" data-section="publications" aria-selected="true" aria-controls="publications-panel">
           <i class="fa-solid fa-book"></i> Publications
         </button>
         <button type="button" class="section-tab" role="tab" id="tab-funding" data-section="funding" aria-selected="false" aria-controls="funding-panel">
           <i class="fa-solid fa-award"></i> Funding
+        </button>
+        <button type="button" class="section-tab" role="tab" id="tab-blog" data-section="blog" aria-selected="false" aria-controls="blog-panel">
+          <i class="fa-solid fa-wine-glass"></i> Blog &amp; Podcast
         </button>
       </div>
 
@@ -210,6 +221,25 @@
               <a href="https://microsoft.github.io/SkillOpt/" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i>Project</a>
               <a href="https://github.com/microsoft/SkillOpt" target="_blank" rel="noopener"><i class="fa-solid fa-code"></i>Code</a>
               <span class="tag">Agent</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Publication: BEAKER -->
+        <article class="pub" data-tags="embodied_intelligence">
+          <div class="thumb">
+            <img src="assets/papers/beaker.png?v=20261106" alt="BEAKER thumbnail">
+          </div>
+          <div class="content">
+            <div class="ptitle">BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories</div>
+            <div class="pauth">Fei Lin*, Tengchao Zhang*, <b>Ziyang Gong*</b>, Xiaotong Yu, Bohan Zhang, Yifan Zhou, Qihao Yang, Ji Dai, Dong Li, Yining Jiang, Qinghua Ni, Jun Huang, Qiang Zhang, Yue Zhou, Zhihang Zhong, Yonglin Tian, Fei-Yue Wang, Xue Yang</div>
+            <div class="pmeta">
+              <span class="venue-badge distinction-badge">NeurIPS 2026 · Spotlight</span>
+            </div>
+            <div class="plinkline">
+              <a href="https://arxiv.org/abs/2611.06911" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i>Paper</a>
+              <span class="tag">Embodied Intelligence</span>
+              <span class="tag">Benchmark</span>
             </div>
           </div>
         </article>
@@ -330,6 +360,34 @@
         </div>
       </div>
 
+      <div id="blog-panel" class="section-panel" role="tabpanel" aria-labelledby="tab-blog" hidden>
+        <div class="pub-list" id="blogList">
+
+          <article class="pub">
+            <div class="thumb">
+              <img src="assets/blogs/robotics-weight-editing.jpg" alt="Robotics Weight Editing thumbnail">
+            </div>
+            <div class="content">
+              <div class="ptitle">We Asked Opus-5.5 to Edit π₀.₅’s Weights. AutoResearch Made It Happen.</div>
+              <div class="pauth"><b>Ziyang Gong</b>, Kaifeng Zheng, Yingrui Huang, Wendi Chen, Jiaguo Tian, Junkai Yang, Minghuan Liu, Zhenjie Yang</div>
+              <div class="pmeta">
+                <span class="venue-badge">Blog</span>
+                <span class="venue-badge">Robotics · Weight Editing · AutoResearch</span>
+              </div>
+              <div class="pabstract">
+                Two findings: a RoPE-based route to faster robot actions and an unexpected RTC prefix bug.
+              </div>
+              <div class="plinkline">
+                <a href="https://cuzyoung.github.io/robotics-weight-editing/en/" target="_blank" rel="noopener"><i class="fa-solid fa-book-open"></i>Read</a>
+                <a href="https://cuzyoung.github.io/robotics-weight-editing/" target="_blank" rel="noopener"><i class="fa-solid fa-language"></i>中文</a>
+                <span class="tag">Embodied Intelligence</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
       <!-- Visitor map -->
       <div class="visitors-section">
         <h3 class="visitors-title">
@@ -354,14 +412,14 @@
 
   <footer class="footer" style="text-align: center; padding: var(--paddingLG) 0;">
     <div style="color: var(--colorTextTertiary); font-size: var(--fontSizeSm);">
-      Last updated: <span id="lastUpdated">2026-03-05</span> · 
+      Last updated: <span id="lastUpdated">2026-11-06</span> · 
       <a href="https://github.com/Cuzyoung/Cuzyoung.github.io" target="_blank" style="color: var(--colorTextTertiary);">
         <i class="fa-brands fa-github"></i> Source
       </a>
     </div>
   </footer>
 
-  <script src="js/main.js?v=12"></script>
+  <script src="js/main.js?v=15"></script>
 </body>
 </html>
 
