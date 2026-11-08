@@ -414,6 +414,14 @@ a.section-tab-link {
   margin: 0 0 var(--marginSM);
 }
 
+.intro .email {
+  margin: 0 0 var(--margin);
+  color: var(--colorTextSecondary);
+  font-size: var(--fontSize);
+  line-height: 1.6;
+  user-select: text;
+}
+
 /* ===== Link Buttons ===== */
 .link-group {
   display: flex;
